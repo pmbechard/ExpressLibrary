@@ -17,7 +17,10 @@ mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGODB_URL;
 main().catch((err) => console.log('Here', err));
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose
+    .connect(mongoDB)
+    .then(() => console.log('Connected'))
+    .catch((e) => console.log(e));
 }
 
 // view engine setup
